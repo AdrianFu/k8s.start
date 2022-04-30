@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-linux
+  labels:
+    app: alpine-linux
+    cat: infrastructure
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine-linux
+  template:
+    metadata:
+      labels:
+        app: alpine-linux
+    spec:
+      containers:
+      - name: alpine-linux
+        image: alpine
+        command:
+          - /bin/sh
+          - "-c"
+          - "sleep 60m"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
