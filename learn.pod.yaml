@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: alpine-pod
+  name: learn-pod
 spec:
   containers:
   - image: alpine
-    name: alpine-container
+    name: learn-container
     imagePullPolicy: IfNotPresent
 
     resources:
@@ -16,10 +16,10 @@ spec:
     command: ['sh', '-c', 'echo Container 1 is Running ; sleep 3600']
 
     volumeMounts:
-      - mountPath: "/my-pv-path"
-        name: mongo-volume
+      - mountPath: "/learn"
+        name: learn-volume
 
   volumes:
-    - name: mongo-volume
-      hostPath:
-        path: /
+    - name: learn-volume
+      persistentVolumeClaim:
+       claimName: learn-pvc      

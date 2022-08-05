@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: learn-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce 
+  storageClassName: local-storage-learn
+  resources:
+    requests:
+      storage: 20Gi
