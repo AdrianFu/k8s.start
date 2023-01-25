@@ -4,6 +4,8 @@
 
 ```
 kubectl exec --stdin --tty pod/alpine-linux-5d5f994b84-lslvx -- /bin/sh
+
+kubectl exec learn-pod -it sh
 ```
 
 ## Forward local port to a pod/deployment
@@ -11,6 +13,11 @@ kubectl exec --stdin --tty pod/alpine-linux-5d5f994b84-lslvx -- /bin/sh
 ```
 kubectl port-forward pod/.... 8080:80
 kubectl port-forward deployment/.... 8080:80
+```
+
+## Create Deployment YAML with kubectl
+```
+kubectl create deployment nginx --image=nginx:alpine --dry-run=client -o yaml > kubectl-created.yaml
 ```
 
 ## YAML for service
